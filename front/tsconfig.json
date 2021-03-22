@@ -5,6 +5,7 @@
       "jsx": "react",
       "noImplicitAny": false,
       "allowSyntheticDefaultImports": true,
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "typeRoots" : ["node_modules/@types", "src/types"]
     }
   }
