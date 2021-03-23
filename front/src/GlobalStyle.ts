@@ -10,7 +10,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     height: 100vh;
     overflow-x:hidden;
-font-family: 'Noto Sans KR', sans-serif;
+    font-family: Noto Sans KR, sans-serif;
+  }
+
+  input, button {
+    font-family:Noto Sans KR,sans-serif;
   }
 `;
 export default GlobalStyle;

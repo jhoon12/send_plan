@@ -54,6 +54,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "public"),
     inline: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
+    
   }
 };
