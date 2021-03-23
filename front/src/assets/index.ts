@@ -1,1 +1,1 @@
-export {default as MainImg} from './MainImg.png';
+// export {default as MainImg} from './MainImg.png';
