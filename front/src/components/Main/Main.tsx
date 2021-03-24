@@ -1,10 +1,12 @@
 import React from 'react';
 import * as S from './style';
-import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css'
+import Calendar from './Calendar/Calendar'
 const Main = () => {
+  
     return(
         <S.Body>
-            <Calendar></Calendar>
+            <Calendar/>
         </S.Body>
     )
 }

@@ -56,4 +56,7 @@ export const GoToSignUp = styled.div`
   font-size: 10px;
   margin-right: 50px;
   cursor: pointer;
+  &:hover{
+    color: #8ec5fc;
+  }
 `;
