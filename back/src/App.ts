@@ -1,18 +1,19 @@
-// import express from 'express';
+import express, { Application, Request, Response } from "express";
+import sequelize from "./config/config";
+import cors from "cors";
+import morgan from "morgan";
+// import router from "./routes";
+// import path from "path";
+// const app = new App().application;
 
-// class App {
-//   public application: express.Application;
+const app: Application = express();
 
-//   constructor() {
-//     this.application = express();
-//     this.router();
-//   }
+app.use(morgan("dev"));
+app.use(cors());
 
-//   private router(): void {
-//     this.application.get('/', (req: express.Request, res: express.Response) => {
-//       res.send('hello!');
-//     })
-//   }
-// }
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// export default App;
+app.listen(3000, () => {
+  console.log("Server listening on port 3000");
+});

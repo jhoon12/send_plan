@@ -1,7 +1,19 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Body = styled.div`
-    width:100vw;
-    height:100vh;
-    background:linear-gradient(#F0FFFF,#F5F5DC, #E0FFFF,#7FFFD4);
+  width: 100vw;
+  height: 100vh;
+`;
+export const Header = styled.div`
+  width: 100%;
+  height: 100px;
+`;
+export const LogoTitle = styled.div`
+  width: 20%;
+  height: 100%;
+  font-family: "Caveat", cursive;
+  font-weight: bold;
+  font-size: 50px;
+  color: #8ec5fc;
+  padding-left:30px;
 `;
