@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {RightArrow} from '@styled-icons/boxicons-regular/RightArrow'
 export const Body = styled.div`
   width: 100vw;
   height: 100vh;
@@ -17,3 +17,8 @@ export const LogoTitle = styled.div`
   color: #8ec5fc;
   padding-left:30px;
 `;
+// export const 
+export const arrow  = styled(RightArrow)`
+  width:100px;
+  height:100px;
+`
