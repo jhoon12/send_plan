@@ -2,11 +2,9 @@ import React from "react";
 import * as S from "./style";
 import Calendar from "./Calendar/Calendar";
 
-interface Props{
-  returnCalendar : () =>number | void
-}
 
-const Main:React.FC<Props> = ({returnCalendar}) => {
+
+const Main = () => {
   return (
     <S.Body>
       <S.Header>
@@ -18,7 +16,7 @@ const Main:React.FC<Props> = ({returnCalendar}) => {
         </S.MonthBox>
       </S.Header>
       <S.MainBody>
-        <Calendar returnCalendar={returnCalendar}/>
+        <Calendar />
       </S.MainBody>
     </S.Body>
   );
