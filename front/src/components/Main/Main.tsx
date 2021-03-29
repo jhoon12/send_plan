@@ -1,17 +1,25 @@
 import React from "react";
 import * as S from "./style";
-import "react-calendar/dist/Calendar.css";
 import Calendar from "./Calendar/Calendar";
-// import {AiFillCaretRight} from 'react-icons/ai';
-const Main = () => {
+
+interface Props{
+  returnCalendar : () =>number | void
+}
+
+const Main:React.FC<Props> = ({returnCalendar}) => {
   return (
     <S.Body>
       <S.Header>
-        {/* <AiFillCaretRight/> */}
-        <S.arrow></S.arrow>
-        <S.LogoTitle >Send Plan</S.LogoTitle>
+        <S.LogoTitle>Send Plan</S.LogoTitle>
+        <S.MonthBox>
+          <S.LeftDArrow />
+          <S.Month>2019.01 </S.Month>
+          <S.RightDArrow />
+        </S.MonthBox>
       </S.Header>
-      <Calendar />
+      <S.MainBody>
+        <Calendar returnCalendar={returnCalendar}/>
+      </S.MainBody>
     </S.Body>
   );
 };

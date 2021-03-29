@@ -1,5 +1,5 @@
 export interface SettingDate {
-    date: number;
+    month: number;
     year: number;
   }
   export interface Date {
