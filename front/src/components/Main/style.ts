@@ -23,7 +23,7 @@ export const LogoTitle = styled.div`
 `;
 export const MonthBox = styled.div`
   padding-top: 20px;
-  margin-left: 20%;
+  margin-left: 22%;
   display: flex;
   width: 30%;
   height: 50%;
@@ -49,5 +49,4 @@ export const Month = styled.div`
 `;
 export const MainBody = styled.div`
   flex:1;
-  background-color:red;
 `
