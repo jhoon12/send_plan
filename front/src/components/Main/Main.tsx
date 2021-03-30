@@ -1,30 +1,48 @@
 import React from "react";
 import * as S from "./style";
 import Calendar from "./Calendar/Calendar";
-
-interface Props{
-  nextMonth : () => void,
-  prevMonth : () => void,
-  date:{
-    month:number,
-    year:number
-  }
+import Modal from "./Modal/Modal";
+import { ReducerType } from "../../redux/store";
+import { useSelector } from "react-redux";
+interface Props {
+  nextMonth: () => void;
+  prevMonth: () => void;
+  dispatchModal: () => void;
+  date: {
+    month: number;
+    year: number;
+  };
 }
 
-
-const Main:React.FC<Props> = ({nextMonth,prevMonth, date}) => {
+const Main: React.FC<Props> = ({
+  nextMonth,
+  prevMonth,
+  date,
+  dispatchModal
+}) => {
+  const { setModal } = useSelector((store: ReducerType) => store.ModalState);
   return (
     <S.Body>
+      {setModal && (
+        <>
+          <S.ModalBody onClick={dispatchModal}></S.ModalBody>
+          <S.ModalBox>
+            <Modal></Modal>
+          </S.ModalBox>
+        </>
+      )}
       <S.Header>
         <S.LogoTitle>Send Plan</S.LogoTitle>
         <S.MonthBox>
-          <S.LeftDArrow onClick={prevMonth}/>
-          <S.Month>{date.year}.{date.month < 10 ? `0${date.month}`: `${date.month}`} </S.Month>
-          <S.RightDArrow onClick={nextMonth}/>
+          <S.LeftDArrow onClick={prevMonth} />
+          <S.Month>
+            {date.year}.{date.month < 10 ? `0${date.month}` : `${date.month}`}{" "}
+          </S.Month>
+          <S.RightDArrow onClick={nextMonth} />
         </S.MonthBox>
       </S.Header>
       <S.MainBody>
-        <Calendar />
+        <Calendar dispatchModal={dispatchModal} />
       </S.MainBody>
     </S.Body>
   );

@@ -4,7 +4,11 @@ import * as S from "./style";
 import { ReducerType } from "../../../redux/store";
 import { Today } from "../../../type/Calendar";
 
-const Calendar = () => {
+interface Props{
+  dispatchModal : ()=>void,
+}
+
+const Calendar:React.FC<Props> = ({dispatchModal}) => {
   const [today, setToday] = useState<Today>({
     date: new Date().getDate(),
     month: new Date().getMonth() + 1
@@ -32,7 +36,7 @@ const Calendar = () => {
         {setData.map((ele, index) => (
           <S.Week key={index}>
             {ele.map((ele, index) => (
-              <S.DayBox key={index} dayData={ele} today={today}>
+              <S.DayBox key={index} dayData={ele} today={today} onClick={dispatchModal}>
                 <S.Day>{ele.date}</S.Day>
               </S.DayBox>
             ))}

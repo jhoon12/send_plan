@@ -18,6 +18,7 @@ const ModalState = (
         setModal: !state.setModal
       };
     default:
-      return state; //복사
+      return state;
   }
 };
+export default ModalState

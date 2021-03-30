@@ -4,8 +4,21 @@ import { LeftArrow } from "@styled-icons/boxicons-regular/LeftArrow";
 export const Body = styled.div`
   width: 100vw;
   height: 100vh;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
+`;
+export const ModalBody = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(43, 40, 40, 0.5);
+  position: absolute;
+`;
+export const ModalBox = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const Header = styled.div`
   width: 100%;
@@ -33,12 +46,12 @@ export const RightDArrow = styled(RightArrow)`
   width: 30px;
   height: 30px;
   margin-bottom: 3px;
-  transform:translate(0px, -2px);
+  transform: translate(0px, -2px);
 `;
 export const LeftDArrow = styled(LeftArrow)`
   width: 30px;
   height: 30px;
-  transform:translate(0px, -2px);
+  transform: translate(0px, -2px);
 `;
 export const Month = styled.div`
   font-size: 30px;
@@ -48,5 +61,5 @@ export const Month = styled.div`
   align-items: center;
 `;
 export const MainBody = styled.div`
-  flex:1;
-`
+  flex: 1;
+`;
