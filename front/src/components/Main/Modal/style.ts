@@ -40,6 +40,15 @@ export const ToDoContainer = styled.div`
   width: 100%;
   height: 30%;
   margin-bottom: 5px;
+  align-items:center;
+  display:flex;
+`;
+
+export const ToDo = styled.div`
+  padding-left:30px;
+  width:100%;
+  height:20px;
+  font-weight: bold;
 `;
 
 export const ImgBox = styled.div`

@@ -7,7 +7,8 @@ const Modal = () => {
         <S.Date>2021.04.05</S.Date>
       </S.DateBox>
       <S.ToDoBox>
-        <S.ToDoContainer></S.ToDoContainer>
+        <S.ToDoContainer>
+          <S.ToDo>짜증나네</S.ToDo> </S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
