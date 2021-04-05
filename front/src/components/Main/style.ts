@@ -11,14 +11,18 @@ export const ModalBody = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgb(43, 40, 40, 0.5);
-  position: absolute;
+  position:absolute;
+  z-index:4;
 `;
 export const ModalBox = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position:absolute;
+  width:50vw;
+  height:50vh;
+	right: 30%;
+	top: 11%;
+  width: 40vw;
+	height: 75vh;
+  z-index:5;
 `;
 export const Header = styled.div`
   width: 100%;
