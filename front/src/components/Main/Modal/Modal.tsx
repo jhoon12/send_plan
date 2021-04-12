@@ -8,7 +8,7 @@ const Modal = () => {
       </S.DateBox>
       <S.ToDoBox>
         <S.ToDoContainer>
-          <S.ToDo>짜증나네</S.ToDo> </S.ToDoContainer>
+          <S.ToDo>행복하네</S.ToDo> </S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
