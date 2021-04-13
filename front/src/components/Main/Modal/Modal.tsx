@@ -8,9 +8,16 @@ const Modal = () => {
       </S.DateBox>
       <S.ToDoBox>
         <S.ToDoContainer>
-          <S.ToDo>행복하네</S.ToDo> </S.ToDoContainer>
-        <S.ToDoContainer></S.ToDoContainer>
-        <S.ToDoContainer></S.ToDoContainer>
+          <S.ToDo>커밋하기!!!</S.ToDo>
+        </S.ToDoContainer>
+        <S.ToDoContainer>
+
+          <S.ToDo>깃허브 레포 정리하기!!!</S.ToDo>
+        </S.ToDoContainer>
+        <S.ToDoContainer>
+
+          <S.ToDo>맛있게 밥먹기!!!</S.ToDo>
+        </S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>
         <S.ToDoContainer></S.ToDoContainer>

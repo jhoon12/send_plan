@@ -4,7 +4,6 @@ import Sequelize, { Model } from "sequelize";
 export class User extends Model {
   email: string;
   password: string;
-  id: string;
 }
 User.init(
   {
