@@ -1,18 +1,9 @@
 import { Router } from "express";
-import { User } from "../models/user";
-import auth from '../controller/user';
+import * as controller from "../controller/user/user";
+import * as auth from '../middlewares/auth'
 const router = Router();
 
-router.post('/signUp', (req, res, next)=>{
-
-})
-
-router.post("/create", (req, res, next) => {
-  User.create({
-    email: "testEmsdaasail",
-    password: "testPW",
-  });
-  res.send("완료");
-});
-
+router.post("/login", controller.Login);
+router.post("/signUp", controller.SignUp);
+router.get('/refresh', auth.refreshMiddleware, controller.refresh)
 export default router;

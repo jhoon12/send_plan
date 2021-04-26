@@ -2,18 +2,22 @@ import { sequelize } from "../config/config";
 import Sequelize, { Model } from "sequelize";
 
 export class User extends Model {
-  email: string;
+  email!: string;
   password: string;
 }
 User.init(
   {
     email: {
       type: Sequelize.STRING(30),
-      primaryKey: true,
+      primaryKey: false,
     },
     password: {
       type: Sequelize.STRING(100),
       allowNull: false,
+    },
+    id: {
+      type: Sequelize.STRING(30),
+      primaryKey: true,
     },
   },
   {
@@ -21,4 +25,3 @@ User.init(
     modelName: "user",
   }
 );
-

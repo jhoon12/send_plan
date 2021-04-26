@@ -14,6 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", router);
 
-app.listen(process.env.DB_PORT || 3301, () => {
-  console.log("Server listening on port 3301");
+app.listen(process.env.DB_PORT || 8000, () => {
+  console.log("Server listening on port 8000");
 });
