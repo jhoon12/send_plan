@@ -6,4 +6,5 @@ const router = Router();
 router.post("/login", controller.Login);
 router.post("/signUp", controller.SignUp);
 router.get('/refresh', auth.refreshMiddleware, controller.refresh)
+router.post('email', )
 export default router;
