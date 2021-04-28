@@ -9,9 +9,8 @@ User.init(
   {
     email: {
       type: Sequelize.STRING(30),
-      primaryKey: false,
     },
-    password: {
+    pw: {
       type: Sequelize.STRING(100),
       allowNull: false,
     },

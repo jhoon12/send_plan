@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Date, Today } from "../../../type/Calendar";
+import { Date, Today } from "../../../hooks/type/Calendar";
 
 export const Header = styled.div`
   width: 100%;
@@ -36,7 +36,7 @@ export const DayBox = styled.div<{ dayData: Date; today: Today }>`
     else if (props.dayData.isThisMonth) return "black";
     else return "#868e96";
   }};
-  /* color:${(props: any) => "red"} */
+  
 `;
 export const Day = styled.div`
   margin: 0 auto;

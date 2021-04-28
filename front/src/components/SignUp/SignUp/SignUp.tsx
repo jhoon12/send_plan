@@ -1,17 +1,48 @@
 import React from "react";
 import * as S from "./style";
 import SignUpBox from "../SignUpBox/SignUpBox";
+import { SignUpDataInterface } from "../../../hooks/type/user";
 interface Props {
   goToCheckEmail: () => void;
+  userSignUpData: SignUpDataInterface;
+  setUserSignUpData: (signUpData: SignUpDataInterface) => void;
 }
-const SignUp: React.FC<Props> = ({ goToCheckEmail }) => {
+const SignUp: React.FC<Props> = ({
+  goToCheckEmail,
+  userSignUpData,
+  setUserSignUpData
+}) => {
   return (
     <>
       <SignUpBox>
-        <S.Input placeholder="이메일"></S.Input>
-        <S.Input placeholder="아이디"></S.Input>
-        <S.Input placeholder="비밀번호"></S.Input>
-        <S.Input placeholder="비밀번호 확인"></S.Input>
+        <S.Input
+          placeholder="이메일"
+          value={userSignUpData.email}
+          onChange={e => {
+            setUserSignUpData({ ...userSignUpData, email: e.target.value });
+          }}
+        ></S.Input>
+        <S.Input
+          placeholder="아이디"
+          value={userSignUpData.id}
+          onChange={e => {
+            setUserSignUpData({ ...userSignUpData, id: e.target.value });
+          }}
+        ></S.Input>
+        <S.Input
+          placeholder="비밀번호"
+          value={userSignUpData.pw}
+          onChange={e => {
+            setUserSignUpData({ ...userSignUpData, pw: e.target.value });
+          }}
+        ></S.Input>
+        <S.Input
+          placeholder="비밀번호 확인"
+          value={userSignUpData.pwCheck}
+          onChange={e => {
+            setUserSignUpData({ ...userSignUpData, pwCheck: e.target.value });
+          }}
+        ></S.Input>
         <S.BtnBox>
           <S.SignUpBtn onClick={goToCheckEmail}>계정 생성</S.SignUpBtn>
         </S.BtnBox>
