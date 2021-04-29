@@ -33,3 +33,26 @@ export const sendEmail = async (req: Request, res: Response, next) => {
     console.log(err);
   }
 };
+
+export const CertifyEmail = async (req: Request, res: Response, next) => {
+  try {
+    const { reqCode, email } = req.body;
+    await Code.findOne({ where: { email } });
+    const code = await Code.findOne({ where: { email } });
+    if (reqCode === parseInt(code.code)) {
+      res.status(200).json({
+        status: "Success",
+        code: 200,
+        message: "Sent Auth Email",
+      });
+    } else {
+      res.status(401).json({
+        status: "실패",
+        code: 401,
+        message: "인증코드가 다릅니다",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};

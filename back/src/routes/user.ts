@@ -8,4 +8,5 @@ router.post("/login", userController.Login);
 router.post("/signUp", userController.SignUp);
 router.get("/refresh", auth.refreshMiddleware, userController.refresh);
 router.post("/email", emailController.sendEmail);
+router.post("/emailCode", emailController.CertifyEmail)
 export default router;
