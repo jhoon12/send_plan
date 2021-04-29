@@ -1,12 +1,19 @@
 import { User } from "../../models/user";
-
+import { Code } from "../../models/code";
 import { mkAccess, mkRefresh } from "./mktoken";
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
+
+export const dummy = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  await Code.create();
+};
 
 export const SignUp = async (req: Request, res: Response, next) => {
   const { email, pw, id } = req.body;
   if (!(await User.findOne({ where: { id } }))) {
-    console.log("요청");
     try {
       await User.create({
         id: id,
@@ -44,7 +51,6 @@ export const Login = async function (req: Request, res: Response, next) {
 };
 
 export const refresh = async (req: Request, res: Response, next) => {
-  console.log(req["decoded"]);
   const user = await User.findOne({ where: { id: req["decoded"].id } });
   const accessToken = await mkAccess(req, user);
   res.status(200).json({ accessToken });

@@ -20,7 +20,6 @@ export const verifyToken = async (req: Request, res: Response, next) => {
 };
 
 export const refreshMiddleware = async (req: Request, res: Response, next) => {
-  console.log("리플");
   const token = req.headers["refresh-token"];
   if (!token) {
     res.status(403).json({ message: "token required" });

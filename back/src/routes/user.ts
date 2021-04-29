@@ -1,10 +1,11 @@
 import { Router } from "express";
-import * as controller from "../controller/user/user";
-import * as auth from '../middlewares/auth'
+import * as userController from "../controller/user/user";
+import * as emailController from "../controller/email";
+import * as auth from "../middlewares/auth";
 const router = Router();
 
-router.post("/login", controller.Login);
-router.post("/signUp", controller.SignUp);
-router.get('/refresh', auth.refreshMiddleware, controller.refresh)
-router.post('email', )
+router.post("/login", userController.Login);
+router.post("/signUp", userController.SignUp);
+router.get("/refresh", auth.refreshMiddleware, userController.refresh);
+router.post("/email", emailController.sendEmail);
 export default router;

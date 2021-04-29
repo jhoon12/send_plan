@@ -1,12 +1,13 @@
-import * as dotenv from "dotenv";
+import { config } from "dotenv";
 import { Request } from "express";
-dotenv.config();
+config();
 const jwt = require("jsonwebtoken");
 
 const YOUR_SECRET_KEY = process.env.SECRET_KEY || "sss";
 interface UserInterface {
   email: string;
-  password: string;
+  pw: string;
+  id: string;
 }
 export const mkAccess = async (req: Request, user: UserInterface) => {
   const email = user?.email;
