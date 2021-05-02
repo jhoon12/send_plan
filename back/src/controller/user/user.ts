@@ -13,14 +13,14 @@ export const dummy = async (
 
 export const SignUp = async (req: Request, res: Response, next) => {
   const { email, pw, id } = req.body;
-  if (!(await User.findOne({ where: { id } }))) {
+  if (!(await User.findOne({ where: { email } }))) {
     try {
-      await User.create({
+      User.create({
         id: id,
         email: email,
         pw: pw,
       });
-      res.status(200).send("성공");
+      next();
     } catch (err) {
       console.log(err.message);
     }

@@ -5,7 +5,7 @@ import * as auth from "../middlewares/auth";
 const router = Router();
 
 router.post("/login", userController.Login);
-router.post("/signUp", userController.SignUp);
+router.post("/signUp", userController.SignUp,  emailController.sendEmail);
 router.get("/refresh", auth.refreshMiddleware, userController.refresh);
 router.post("/email", emailController.sendEmail);
 router.post("/emailCode", emailController.CertifyEmail)

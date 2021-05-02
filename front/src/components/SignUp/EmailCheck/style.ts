@@ -1,15 +1,15 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Discrip = styled.div`
-    width:100%;
-    margin:0 auto;
-    font-size:25px;
-    color: #909090;
-`
+  width: 100%;
+  margin: 0 auto;
+  font-size: 25px;
+  color: #909090;
+`;
 
 export const Input = styled.input`
   margin: 0 auto;
-  margin-top:70px;
+  margin-top: 70px;
   border: none;
   display: block;
   border-bottom: 1px solid #909090;
@@ -22,6 +22,10 @@ export const Input = styled.input`
   &::placeholder {
     color: #909090;
   }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 export const BtnBox = styled.div`
   width: 100%;
@@ -31,8 +35,8 @@ export const BtnBox = styled.div`
   align-items: center;
 `;
 export const SignUpBtn = styled.button`
-margin:0 auto;
-    margin-top:100px;
+  margin: 0 auto;
+  margin-top: 100px;
   background-color: #8ec5fc;
   width: 50%;
   height: 70%;

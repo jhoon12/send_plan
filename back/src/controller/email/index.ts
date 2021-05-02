@@ -1,13 +1,12 @@
 import nodemailer from "nodemailer";
 import { Request, Response } from "express";
 import { Code } from "../../models/code";
-
+import { User } from "../../models/user";
 export const sendEmail = async (req: Request, res: Response, next) => {
   try {
     const ranNum = Math.floor(Math.random() * (999999 - 111111 + 1)) + 111111;
     const { email } = req.body;
-    const code = await Code.create({ email, code: ranNum.toString() });
-    console.log(code);
+    await Code.create({ email, code: ranNum.toString() });
     let transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
