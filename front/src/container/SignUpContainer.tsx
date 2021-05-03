@@ -1,10 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { Reducer, useCallback, useState } from "react";
 import SignUp from "../components/SignUp/SignUp/SignUp";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { signUpHandlerApi } from "../lib/api/SignUp";
 import { SignUpDataInterface } from "../hooks/type/user";
+import { ReducerType } from "../redux/store";
 
-const CheckEmail = (email: string) => {
+const CheckEmail = (email: string): boolean => {
   const reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
   if (!reg_email.test(email)) return false;
   else return true;
@@ -12,20 +14,17 @@ const CheckEmail = (email: string) => {
 
 const SignUpContainer = () => {
   const history = useHistory();
+  const { email } = useSelector((store: ReducerType) => store.SignUpState);
   const [userSignUpData, setUserSignUpData] = useState<SignUpDataInterface>({
-    email: "",
     id: "",
     pw: "",
     pwCheck: ""
   });
   const goToCheckEmail = useCallback(async () => {
-    if (
-      userSignUpData.pw === userSignUpData.pwCheck &&
-      CheckEmail(userSignUpData.email)
-    ) {
+    if (userSignUpData.pw === userSignUpData.pwCheck && CheckEmail(email)) {
       try {
         const res = await signUpHandlerApi(
-          userSignUpData.email,
+          email,
           userSignUpData.id,
           userSignUpData.pw
         );
@@ -42,6 +41,7 @@ const SignUpContainer = () => {
 
   return (
     <SignUp
+      email={email}
       goToCheckEmail={goToCheckEmail}
       setUserSignUpData={setUserSignUpData}
       userSignUpData={userSignUpData}

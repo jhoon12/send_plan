@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import { Request, Response } from "express";
 import { Code } from "../../models/code";
-import { User } from "../../models/user";
 export const sendEmail = async (req: Request, res: Response, next) => {
   try {
     const ranNum = Math.floor(Math.random() * (999999 - 111111 + 1)) + 111111;

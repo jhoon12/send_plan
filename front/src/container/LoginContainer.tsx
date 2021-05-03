@@ -18,6 +18,7 @@ const LoginContainer = () => {
         userLoginData.id,
         userLoginData.pw
       );
+      console.log(res);
       localStorage.setItem("accessToken", res.accessToken);
       localStorage.setItem("refreshToken", res.refreshToken);
       history.push("/main");

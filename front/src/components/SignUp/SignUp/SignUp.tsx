@@ -1,25 +1,31 @@
 import React from "react";
 import * as S from "./style";
 import SignUpBox from "../SignUpBox/SignUpBox";
+import { useDispatch, useSelector } from "react-redux";
 import { SignUpDataInterface } from "../../../hooks/type/user";
+import { setEmail } from "../../../redux/actions/SignUp";
+import { ReducerType } from "../../../redux/store";
 interface Props {
   goToCheckEmail: () => void;
   userSignUpData: SignUpDataInterface;
   setUserSignUpData: (signUpData: SignUpDataInterface) => void;
+  email: string;
 }
 const SignUp: React.FC<Props> = ({
   goToCheckEmail,
   userSignUpData,
-  setUserSignUpData
+  setUserSignUpData,
+  email
 }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <SignUpBox>
         <S.Input
           placeholder="이메일"
-          value={userSignUpData.email}
+          value={email}
           onChange={e => {
-            setUserSignUpData({ ...userSignUpData, email: e.target.value });
+            dispatch(setEmail(e.target.value));
           }}
         ></S.Input>
         <S.Input
