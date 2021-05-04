@@ -5,7 +5,9 @@ import WindowCalander from "window-calander";
 import { useDispatch } from "react-redux";
 import { setCalendar } from "../redux/actions/Calendar";
 import { setModal } from "../redux/actions/Modal";
+import { useHistory } from "react-router";
 const MainContainer = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [date, setDate] = useState<SettingDate>({ month: 0, year: 0 });
   useEffect(() => {
@@ -31,8 +33,12 @@ const MainContainer = () => {
   const dispatchModal = useCallback(() => {
     dispatch(setModal());
   }, [setModal]);
+  const goToLogin = useCallback(() => {
+    history.push("/");
+  }, []);
   return (
     <Main
+      goToLogin={goToLogin}
       nextMonth={nextMonth}
       date={date}
       prevMonth={prevMonth}

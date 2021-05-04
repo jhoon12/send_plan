@@ -40,14 +40,14 @@ export const ToDoContainer = styled.div`
   width: 100%;
   height: 30%;
   margin-bottom: 5px;
-  align-items:center;
-  display:flex;
+  align-items: center;
+  display: flex;
 `;
 
 export const ToDo = styled.div`
-  padding-left:30px;
-  width:100%;
-  height:20px;
+  padding-left: 30px;
+  width: 100%;
+  height: 20px;
   font-weight: bold;
 `;
 
@@ -71,4 +71,13 @@ export const ImgText = styled.label`
 export const Imginput = styled.input`
   width: 0px;
   outline: none;
+`;
+export const PlusBox = styled.div`
+  font-size: 60px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
 `;

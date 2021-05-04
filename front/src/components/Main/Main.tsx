@@ -12,13 +12,15 @@ interface Props {
     month: number;
     year: number;
   };
+  goToLogin: () => void;
 }
 
 const Main: React.FC<Props> = ({
   nextMonth,
   prevMonth,
   date,
-  dispatchModal
+  dispatchModal,
+  goToLogin
 }) => {
   const { setModal } = useSelector((store: ReducerType) => store.ModalState);
   return (
@@ -32,7 +34,7 @@ const Main: React.FC<Props> = ({
         </>
       )}
       <S.Header>
-        <S.LogoTitle>Send Plan</S.LogoTitle>
+        <S.LogoTitle onClick={goToLogin}>Send Plan</S.LogoTitle>
         <S.MonthBox>
           <S.LeftDArrow onClick={prevMonth} />
           <S.Month>

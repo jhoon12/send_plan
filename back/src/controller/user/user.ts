@@ -3,13 +3,6 @@ import { Code } from "../../models/code";
 import { mkAccess, mkRefresh } from "./mktoken";
 import { Response, Request, NextFunction } from "express";
 
-export const dummy = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  await Code.create();
-};
 
 export const SignUp = async (req: Request, res: Response, next) => {
   const { email, pw, id } = req.body;

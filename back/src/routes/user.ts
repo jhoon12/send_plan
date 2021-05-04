@@ -2,6 +2,7 @@ import { Router } from "express";
 import * as userController from "../controller/user/user";
 import * as emailController from "../controller/email";
 import * as auth from "../middlewares/auth";
+
 const router = Router();
 
 router.post("/login", userController.Login);

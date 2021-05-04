@@ -2,7 +2,7 @@ import { sequelize } from "../config/config";
 import Sequelize, { Model } from "sequelize";
 
 export class Code extends Model {
-  static find(arg0: { where: { email: any; }; }) {
+  static find(arg0: { where: { email: any } }) {
     throw new Error("Method not implemented.");
   }
   email?: string;

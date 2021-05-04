@@ -7,6 +7,7 @@ interface Props {
   setUserLoginData: (userData: { id: string; pw: string }) => void;
   userLoginData: { id: string; pw: string };
   loginBtnHandler: () => void;
+  
 }
 
 const Login: React.FC<Props> = ({
