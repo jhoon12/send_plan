@@ -5,6 +5,7 @@ export class ToDo extends Model {
   email: string;
   date: string;
   todoID: number;
+  img : string;
 }
 ToDo.init(
   {
@@ -22,6 +23,9 @@ ToDo.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    img : {
+      type: Sequelize.STRING()
+    }
   },
   {
     sequelize,

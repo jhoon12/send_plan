@@ -1,5 +1,4 @@
 import { User } from "../../models/user";
-import { Code } from "../../models/code";
 import { mkAccess, mkRefresh } from "./mktoken";
 import { Response, Request, NextFunction } from "express";
 

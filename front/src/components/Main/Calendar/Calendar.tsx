@@ -13,7 +13,6 @@ const Calendar: React.FC<Props> = ({ dispatchModal }) => {
     date: new Date().getDate(),
     month: new Date().getMonth() + 1
   });
-  console.log(today);
   const { setData } = useSelector((store: ReducerType) => store.CalendarState);
   const dayOfTheWeek: string[] = [
     "Sun",
