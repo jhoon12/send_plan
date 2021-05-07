@@ -13,5 +13,6 @@ router.post(
   upload.single("image"),
   todo.addImage
 );
+router.get('/readImage', auth.verifyToken, todo.readImage);
 
 export default router;

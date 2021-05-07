@@ -30,6 +30,7 @@ const Login: React.FC<Props> = ({
           value={userLoginData.id}
         />
         <S.LoginInput
+        type="password"
           placeholder="비밀번호"
           onChange={e =>
             setUserLoginData({ ...userLoginData, pw: e.target.value })
