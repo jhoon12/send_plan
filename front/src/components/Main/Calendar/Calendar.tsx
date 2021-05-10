@@ -23,7 +23,6 @@ const Calendar: React.FC<Props> = ({ dispatchModal }) => {
     "Fri",
     "Set"
   ];
-  console.log(setData);
   return (
     <>
       <S.Header>
@@ -32,7 +31,7 @@ const Calendar: React.FC<Props> = ({ dispatchModal }) => {
         ))}
       </S.Header>
       <S.Body>
-        {setData.map((ele, index) => (
+        {setData.map((ele, index : number) => (
           <S.Week key={index}>
             {ele.map((ele, index) => (
               <S.DayBox
@@ -40,7 +39,7 @@ const Calendar: React.FC<Props> = ({ dispatchModal }) => {
                 dayData={ele}
                 today={today}
                 onClick={dispatchModal}
-              >
+              >{console.log(ele)}
                 <S.Day>{ele.date}</S.Day>
               </S.DayBox>
             ))}
