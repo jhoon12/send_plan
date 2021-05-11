@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 interface Props {
   nextMonth: () => void;
   prevMonth: () => void;
-  dispatchModal: () => void;
+  dispatchModal: (date : string) => void;
   date: {
     month: number;
     year: number;
@@ -27,7 +27,7 @@ const Main: React.FC<Props> = ({
     <S.Body>
       {setModal && (
         <>
-          <S.ModalBody onClick={dispatchModal}></S.ModalBody>
+          <S.ModalBody onClick={() => dispatchModal('10001010')}></S.ModalBody>
           <S.ModalBox>
             <Modal></Modal>
           </S.ModalBox>
