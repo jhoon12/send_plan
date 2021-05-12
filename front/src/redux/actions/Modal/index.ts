@@ -1,9 +1,10 @@
-export const SET_MODAL = 'Modal/SET_MODAL' as const;
+export const SET_MODAL = "Modal/SET_MODAL" as const;
 
-export const setModal = ()=>({
-    type: SET_MODAL
-})
+export const setModal = (payload: string) => ({
+  type: SET_MODAL,
+  payload
+});
 
-type ModalActionType = |ReturnType<typeof setModal>
+type ModalActionType = ReturnType<typeof setModal>;
 
-export default ModalActionType
+export default ModalActionType;

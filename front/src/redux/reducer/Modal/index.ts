@@ -2,9 +2,11 @@ import ModalActionType, { SET_MODAL } from "../../actions/Modal";
 
 export interface InitialInterface {
   setModal: boolean;
+  date: string;
 }
 const initialState = {
-  setModal: false
+  setModal: false,
+  date: ""
 };
 
 const ModalState = (
@@ -15,10 +17,11 @@ const ModalState = (
     case SET_MODAL:
       return {
         ...state,
-        setModal: !state.setModal
+        setModal: !state.setModal,
+        date: action.payload
       };
     default:
       return state;
   }
 };
-export default ModalState
+export default ModalState;

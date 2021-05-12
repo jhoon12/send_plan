@@ -31,7 +31,7 @@ const MainContainer = () => {
       : setDate({ month: date.month - 1, year: date.year });
   }, [date]);
   const dispatchModal = useCallback((date : string) => {
-    dispatch(setModal());
+    dispatch(setModal(date));
   }, [setModal]);
   const goToLogin = useCallback(() => {
     history.push("/");
