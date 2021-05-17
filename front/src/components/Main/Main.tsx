@@ -7,12 +7,13 @@ import { useSelector } from "react-redux";
 interface Props {
   nextMonth: () => void;
   prevMonth: () => void;
-  dispatchModal: (date : string) => void;
+  dispatchModal: () => void;
   date: {
     month: number;
     year: number;
   };
   goToLogin: () => void;
+  setModalData: (date: string) => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -20,14 +21,15 @@ const Main: React.FC<Props> = ({
   prevMonth,
   date,
   dispatchModal,
-  goToLogin
+  goToLogin,
+  setModalData
 }) => {
   const { setModal } = useSelector((store: ReducerType) => store.ModalState);
   return (
     <S.Body>
       {setModal && (
         <>
-          <S.ModalBody onClick={() => dispatchModal('10001010')}></S.ModalBody>
+          <S.ModalBody onClick={() => dispatchModal()}></S.ModalBody>
           <S.ModalBox>
             <Modal></Modal>
           </S.ModalBox>
@@ -44,7 +46,7 @@ const Main: React.FC<Props> = ({
         </S.MonthBox>
       </S.Header>
       <S.MainBody>
-        <Calendar dispatchModal={dispatchModal} />
+        <Calendar setModalData={setModalData} />
       </S.MainBody>
     </S.Body>
   );

@@ -1,8 +1,8 @@
 export const SET_MODAL = "Modal/SET_MODAL" as const;
 
-export const setModal = (payload: string) => ({
+export const setModal = () => ({
   type: SET_MODAL,
-  payload
+  // payload
 });
 
 type ModalActionType = ReturnType<typeof setModal>;

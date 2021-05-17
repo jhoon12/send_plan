@@ -26,7 +26,7 @@ export const addToDo = async (req: Request, res: Response, next) => {
 
 export const readToDo = async (req: Request, res: Response, next) => {
   const userToDoData = await User.findAll({
-    where: { email: req["decoded"].email, date: req.body["date"] },
+    where: { email: req["decoded"].email, date: req.headers["date"] },
     include: [
       {
         model: ToDo,

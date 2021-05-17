@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { setCalendar } from "../redux/actions/Calendar";
 import { setModal } from "../redux/actions/Modal";
 import { useHistory } from "react-router";
+import { addZeroFunc } from "../lib/utils";
+import { setToDoDataSaga } from "../redux/actions/ToDoData";
 const MainContainer = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,15 +32,19 @@ const MainContainer = () => {
       ? setDate({ month: 12, year: date.year - 1 })
       : setDate({ month: date.month - 1, year: date.year });
   }, [date]);
-  const dispatchModal = useCallback((date : string) => {
-    dispatch(setModal(date));
+  const dispatchModal = useCallback(() => {
+    dispatch(setModal());
   }, [setModal]);
   const goToLogin = useCallback(() => {
     history.push("/");
   }, []);
-
+  const setModalData = useCallback(date => {
+    dispatchModal();
+    dispatch(setToDoDataSaga(date));
+  }, []);
   return (
     <Main
+      setModalData={setModalData}
       goToLogin={goToLogin}
       nextMonth={nextMonth}
       date={date}
