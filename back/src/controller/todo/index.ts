@@ -25,15 +25,22 @@ export const addToDo = async (req: Request, res: Response, next) => {
 };
 
 export const readToDo = async (req: Request, res: Response, next) => {
-  const userToDoData = await User.findAll({
-    where: { email: req["decoded"].email, date: req.headers["date"] },
-    include: [
-      {
-        model: ToDo,
-      },
-    ],
-  });
-  res.status(200).json(userToDoData[0]["todos"]);
+  try {
+    const userToDoData = await User.findAll({
+      where: { email: req["decoded"].email },
+      include: [
+        {
+          model: ToDo,
+          where: {
+            date: req.params["date"],
+          },
+        },
+      ],
+    });
+    return res.status(200).json(userToDoData);
+  } catch (err) {
+    res.status(401).json({ message: err.message });
+  }
 };
 
 export const addImage = async (req: Request, res: Response, next) => {
@@ -56,18 +63,6 @@ export const addImage = async (req: Request, res: Response, next) => {
 export const readImage = async (req: Request, res: Response, next) => {
   try {
     const { start, end } = req.query;
-    // const dayBetween = {
-    //   start: `${dateArr[0][0].year}0${dateArr[0][0].month}${
-    //     dateArr[0][0].date < 10
-    //       ? `0${dateArr[0][0].date}`
-    //       : `${dateArr[0][0].date}`
-    //   }`,
-    //   end: `${dateArr[5][6].year}0${dateArr[5][6].month}${
-    //     dateArr[5][6].date < 10
-    //       ? `0${dateArr[5][6].date}`
-    //       : `${dateArr[5][6].date}`
-    //   }`,
-    // };
     const userMonthImg = await ToDo.findAll({
       where: {
         email: req["decoded"].email,

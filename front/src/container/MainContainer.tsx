@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { setCalendar } from "../redux/actions/Calendar";
 import { setModal } from "../redux/actions/Modal";
 import { useHistory } from "react-router";
-import { addZeroFunc } from "../lib/utils";
 import { setToDoDataSaga } from "../redux/actions/ToDoData";
 const MainContainer = () => {
   const history = useHistory();
@@ -39,6 +38,7 @@ const MainContainer = () => {
     history.push("/");
   }, []);
   const setModalData = useCallback(date => {
+    console.log("호출");
     dispatchModal();
     dispatch(setToDoDataSaga(date));
   }, []);

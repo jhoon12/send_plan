@@ -16,7 +16,7 @@ const ToDoDataState = (
     case SET_TODO_DATA:
       return {
         ...state,
-        todo: action.payload
+        // todo: action.payload
       };
     default:
       return state;

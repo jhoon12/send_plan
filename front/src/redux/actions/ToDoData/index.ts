@@ -7,7 +7,6 @@ export const setToDoData = (payload: any) => ({
   payload
 });
 export const setToDoDataSaga = (payload: string) => ({
-  //리스폰스 타입
   type: SET_TODO_DATA_SAGA,
   payload
 });

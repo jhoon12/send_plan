@@ -40,9 +40,9 @@ const Calendar: React.FC<Props> = ({ setModalData }) => {
                 key={index}
                 dayData={ele}
                 today={today}
-                onClick={() =>
-                  setModalData(addZeroFunc(ele.year, ele.month, ele.date))
-                }
+                onClick={()=>setModalData(
+                  addZeroFunc(ele.year, ele.month, ele.date)
+                )}
               >
                 <S.Day>{ele.date}</S.Day>
               </S.DayBox>

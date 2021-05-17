@@ -43,7 +43,7 @@ export const Login = async function (req: Request, res: Response, next) {
 };
 
 export const refresh = async (req: Request, res: Response, next) => {
-  const user = await User.findOne({ where: { id: req["decoded"].id } });
+  const user = await User.findOne({ where: {email: req["decoded"].email} });
   const accessToken = await mkAccess(req, user);
   res.status(200).json({ accessToken });
 };

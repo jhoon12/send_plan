@@ -6,13 +6,13 @@ const router = Router();
 const upload = multer({ dest: "uploads/" });
 
 router.post("/addToDo", auth.verifyToken, todo.addToDo);
-router.get("/readToDo", auth.verifyToken, todo.readToDo);
+router.get("/readToDo/:date", auth.verifyToken, todo.readToDo);
 router.post(
   "/addImage",
   auth.verifyToken,
   upload.single("image"),
   todo.addImage
 );
-router.get('/readImage', auth.verifyToken, todo.readImage);
+router.get("/readImage", auth.verifyToken, todo.readImage);
 
 export default router;
