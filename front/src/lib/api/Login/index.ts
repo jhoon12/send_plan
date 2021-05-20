@@ -1,5 +1,5 @@
 import apiDefault from "../index";
-import { LoginResponse } from "../../payloads/login";
+import { LoginResponse, RefreshResponse } from "../../payloads/login";
 export const loginHandlerApi = async (id: string, pw: string) => {
   const res = await apiDefault().post<LoginResponse>("/user/login", { id, pw });
   return res.data;
@@ -7,7 +7,7 @@ export const loginHandlerApi = async (id: string, pw: string) => {
 
 export const refreshTokenApi = async () => {
   try {
-    const res = await apiDefault().get("/user/refresh", {
+    const res = await apiDefault().get<RefreshResponse>("/user/refresh", {
       //리턴 타입 지정
       headers: { "refresh-token": localStorage.getItem("refreshToken") }
     });

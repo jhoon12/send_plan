@@ -5,12 +5,7 @@ import { useSelector } from "react-redux";
 import { signUpHandlerApi } from "../lib/api/SignUp";
 import { SignUpDataInterface } from "../hooks/type/user";
 import { ReducerType } from "../redux/store";
-
-const CheckEmail = (email: string): boolean => {
-  const reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-  if (!reg_email.test(email)) return false;
-  else return true;
-};
+import { CheckEmail } from "../lib/utils";
 
 const SignUpContainer = () => {
   const history = useHistory();
@@ -23,12 +18,7 @@ const SignUpContainer = () => {
   const goToCheckEmail = useCallback(async () => {
     if (userSignUpData.pw === userSignUpData.pwCheck && CheckEmail(email)) {
       try {
-        const res = await signUpHandlerApi(
-          email,
-          userSignUpData.id,
-          userSignUpData.pw
-        );
-        console.log(res);
+        await signUpHandlerApi(email, userSignUpData.id, userSignUpData.pw);
         history.push("/signUp/checkEm");
       } catch (err) {
         console.log(err);

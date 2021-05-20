@@ -44,13 +44,20 @@ export const ToDoContainer = styled.div`
   display: flex;
 `;
 
-export const ToDo = styled.div`
-  padding-left: 30px;
-  width: 100%;
-  height: 20px;
-  font-weight: bold;
-`;
-
+// export const ToDo = styled.div`
+//   padding-left: 30px;
+//   width: 85%;
+//   height: 20px;
+//   font-weight: bold;
+//   background-color: #f8f9fa;
+//   border: 0px;
+//   outline: none;
+// `;
+// export const Success = styled.button`
+//   border: none;
+//   background-color: #f8f9fa;
+//   color: rgb(110, 110, 110);
+// `;
 export const ImgBox = styled.div`
   margin: 0 auto;
   margin-top: 30px;
@@ -61,12 +68,19 @@ export const ImgBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const ImgText = styled.label`
+export const ImgText = styled.label<{ img: string }>`
   color: black;
   font-size: 12px;
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url(${props => props.img});
 `;
 export const Imginput = styled.input`
   width: 0px;
@@ -79,5 +93,5 @@ export const PlusBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color:white;
+  color: white;
 `;

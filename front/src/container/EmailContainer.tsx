@@ -11,7 +11,7 @@ const EmailContainer = () => {
   const signUpSuccess = useCallback(async () => {
     try {
       const res = await certifyEmailApi(certifyCode, email);
-      if (res.code === 200) history.push("/main");
+      if (res.data.code === 200) history.push("/main");
     } catch (err) {
       if (err.response.status === 401) alert("인증번호가 다릅니다.");
     }

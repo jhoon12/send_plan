@@ -25,7 +25,7 @@ ToDo.init(
     },
     img: {
       type: Sequelize.STRING(100),
-    },
+    },    
   },
   {
     sequelize,

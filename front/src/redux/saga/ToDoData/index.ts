@@ -1,7 +1,8 @@
 import { put, takeEvery, call } from "@redux-saga/core/effects";
-import { refreshTokenApi } from "../../../lib/api/Login";
-import { readToDo } from "../../../lib/api/ToDo";
+import { addToDo, readToDo } from "../../../lib/api/ToDo";
 import {
+  addToDoSaga,
+  ADD_TODO_SAGA,
   setToDoData,
   setToDoDataSaga,
   SET_TODO_DATA_SAGA
@@ -9,20 +10,21 @@ import {
 
 function* setToDoDataSuccess(action: ReturnType<typeof setToDoDataSaga>) {
   try {
-    console.log(" 사가호출");
     const res = yield call(readToDo, action.payload);
-    // const res = yield readToDo(action.payload);
-    yield put(setToDoData(res.data));
-    console.log(res);
+    yield put(setToDoData(res.data[0]));
   } catch (err) {
     console.log(err);
-    if (err.response.status === 401) {
-      // yield call(refreshTokenApi);
-      // setToDoDataSuccess(action);
-    }
   }
 }
-
+function* addToDoSuccess(action: ReturnType<typeof addToDoSaga>) {
+  try {
+    yield call(addToDo, action.payload.todo, action.payload.date);
+    alert("등록되었습니다.");
+  } catch (err) {
+    console.log(err);
+  }
+}
 export default function* todoDataSaga() {
   yield takeEvery(SET_TODO_DATA_SAGA, setToDoDataSuccess);
+  yield takeEvery(ADD_TODO_SAGA, addToDoSuccess);
 }

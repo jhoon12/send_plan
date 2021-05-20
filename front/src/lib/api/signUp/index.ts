@@ -5,18 +5,16 @@ export const signUpHandlerApi = async (
   id: string,
   pw: string
 ) => {
-  const res = await apiDefault().post<ResDefault>("/user/signUp", {
+  return await apiDefault().post<ResDefault>("/user/signUp", {
     email,
     id,
     pw
   });
-  return res.data;
 };
 
 export const certifyEmailApi = async (code: number, email: string) => {
-  const res = await apiDefault().post<ResDefault>("/user/emailCode", {
+  return await apiDefault().post<ResDefault>("/user/emailCode", {
     email,
     reqCode: code
   });
-  return res.data;
 };

@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Main from "../components/Main/Main";
-import { SettingDate, Date } from "../hooks/type/Calendar";
+import { SettingDate } from "../hooks/type/Calendar";
 import WindowCalander from "window-calander";
 import { useDispatch } from "react-redux";
 import { setCalendar } from "../redux/actions/Calendar";
-import { setModal } from "../redux/actions/Modal";
+import { setModal, setModalDate } from "../redux/actions/Modal";
 import { useHistory } from "react-router";
-import { setToDoDataSaga } from "../redux/actions/ToDoData";
+import {
+  addToDoSaga,
+  setToDoData,
+  SetToDoDataInterface,
+  setToDoDataSaga
+} from "../redux/actions/ToDoData";
 const MainContainer = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -37,10 +42,22 @@ const MainContainer = () => {
   const goToLogin = useCallback(() => {
     history.push("/");
   }, []);
-  const setModalData = useCallback(date => {
+  const setModalData = useCallback((date: string) => {
     console.log("호출");
     dispatchModal();
+    dispatch(setModalDate(date));
     dispatch(setToDoDataSaga(date));
+  }, []);
+  const addToDoData = useCallback((todo: string, date: string) => {
+    dispatch(addToDoSaga({ todo, date }));
+  }, []);
+  const addToDoClient = useCallback((todo: SetToDoDataInterface[]) => {
+    dispatch(
+      setToDoData([
+        ...todo,
+        { ToDo: "", date: " ", email: "", img: "", todoID: 0 }
+      ])
+    );
   }, []);
   return (
     <Main
@@ -50,6 +67,8 @@ const MainContainer = () => {
       date={date}
       prevMonth={prevMonth}
       dispatchModal={dispatchModal}
+      addToDoData={addToDoData}
+      addToDoClient={addToDoClient}
     ></Main>
   );
 };

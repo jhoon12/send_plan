@@ -1,22 +1,26 @@
-import ToDoActionType, { SET_TODO_DATA } from "../../actions/ToDoData";
+import ToDoActionType, {
+  SetToDoDataInterface,
+  SET_TODO_DATA,
+} from "../../actions/ToDoData";
 
 export interface InitialInterface {
-  todo: string;
+  todo: SetToDoDataInterface[];
   date: string;
 }
-export const initialState: InitialInterface[] = [
-  //   { todo: "asdsad", date: "asdds" }
-];
+export const initialState: InitialInterface = {
+  todo: [],
+  date: ""
+};
 
 const ToDoDataState = (
-  state: InitialInterface[] = initialState,
+  state: InitialInterface = initialState,
   action: ToDoActionType
 ) => {
   switch (action.type) {
     case SET_TODO_DATA:
       return {
         ...state,
-        // todo: action.payload
+        todo: action.payload
       };
     default:
       return state;

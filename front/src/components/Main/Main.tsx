@@ -4,6 +4,7 @@ import Calendar from "./Calendar/Calendar";
 import Modal from "./Modal/Modal";
 import { ReducerType } from "../../redux/store";
 import { useSelector } from "react-redux";
+import { SetToDoDataInterface } from "../../redux/actions/ToDoData";
 interface Props {
   nextMonth: () => void;
   prevMonth: () => void;
@@ -14,6 +15,8 @@ interface Props {
   };
   goToLogin: () => void;
   setModalData: (date: string) => void;
+  addToDoData: (todo: string, date: string) => void;
+  addToDoClient: (todo: SetToDoDataInterface[]) => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -22,7 +25,9 @@ const Main: React.FC<Props> = ({
   date,
   dispatchModal,
   goToLogin,
-  setModalData
+  setModalData,
+  addToDoData,
+  addToDoClient
 }) => {
   const { setModal } = useSelector((store: ReducerType) => store.ModalState);
   return (
@@ -31,7 +36,10 @@ const Main: React.FC<Props> = ({
         <>
           <S.ModalBody onClick={() => dispatchModal()}></S.ModalBody>
           <S.ModalBox>
-            <Modal></Modal>
+            <Modal
+              addToDoData={addToDoData}
+              addToDoClient={addToDoClient}
+            ></Modal>
           </S.ModalBox>
         </>
       )}

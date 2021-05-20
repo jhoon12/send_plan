@@ -37,7 +37,10 @@ export const readToDo = async (req: Request, res: Response, next) => {
         },
       ],
     });
-    return res.status(200).json(userToDoData);
+    const response = userToDoData.map((e) => {
+      return e["todos"];
+    });
+    return res.status(200).json(response);
   } catch (err) {
     res.status(401).json({ message: err.message });
   }
