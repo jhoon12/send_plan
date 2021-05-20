@@ -23,9 +23,7 @@ ToDo.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    img: {
-      type: Sequelize.STRING(100),
-    },    
+  
   },
   {
     sequelize,

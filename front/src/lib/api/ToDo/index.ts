@@ -2,15 +2,6 @@ import { ResDefault } from "../../payloads";
 import { ReadToDoRes } from "../../payloads/ToDo";
 import apiDefault from "../index";
 
-interface SetImgFileInterface {
-  lastModified: string;
-  lastModifiedDate: object;
-  name: string;
-  size: number;
-  type: string;
-  webkitRelativePath: string;
-}
-
 export const readToDo = async (date: string) => {
   return await apiDefault().get<ReadToDoRes>(`/todo/readToDo/${date}`);
 };

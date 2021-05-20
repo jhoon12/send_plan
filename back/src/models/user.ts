@@ -1,6 +1,8 @@
 import { sequelize } from "../config/config";
 import Sequelize, { Model } from "sequelize";
-import {ToDo} from './todo';
+import { ToDo } from "./todo";
+import { Image } from "./image";
+
 export class User extends Model {
   email!: string;
   pw: string;
@@ -25,5 +27,7 @@ User.init(
     modelName: "user",
   }
 );
-User.hasMany(ToDo, {foreignKey : 'email', sourceKey: 'email'});
-ToDo.belongsTo(User, { foreignKey: 'email', targetKey: 'email' });
+User.hasMany(ToDo, { foreignKey: "email", sourceKey: "email" });
+ToDo.belongsTo(User, { foreignKey: "email", targetKey: "email" });
+User.hasMany(Image, { foreignKey: "email", sourceKey: "email" });
+Image.belongsTo(User, { foreignKey: "email", targetKey: "email" });

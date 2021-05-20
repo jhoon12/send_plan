@@ -23,10 +23,9 @@ const Modal: React.FC<Props> = ({ addToDoData, addToDoClient }) => {
 
   const changeImg = async (e: ChangeEvent<HTMLInputElement>) => {
     const res = await addToDoImg(e.target.files[0], date);
-    console.log(res);
     setImg(URL.createObjectURL(e.target.files[0]));
   };
-  console.log(img);
+  console.log(todo);
   return (
     <S.Body>
       <S.DateBox>

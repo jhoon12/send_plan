@@ -2,6 +2,7 @@ import { Response, Request, NextFunction } from "express";
 import { User } from "../../models/user";
 import { ToDo } from "../../models/todo";
 import { Op } from "sequelize";
+import { Image } from "../../models/image";
 
 export const addToDo = async (req: Request, res: Response, next) => {
   const date: string = req.body["date"];
@@ -34,6 +35,7 @@ export const readToDo = async (req: Request, res: Response, next) => {
           where: {
             date: req.params["date"],
           },
+          attributes: ["ToDo"],
         },
       ],
     });
@@ -48,8 +50,7 @@ export const readToDo = async (req: Request, res: Response, next) => {
 
 export const addImage = async (req: Request, res: Response, next) => {
   try {
-    console.log(req.file.filename);
-    await ToDo.create({
+    await Image.create({
       img: req.file.filename,
       email: req["decoded"].email,
       date: req.body["date"],
@@ -66,7 +67,7 @@ export const addImage = async (req: Request, res: Response, next) => {
 export const readImage = async (req: Request, res: Response, next) => {
   try {
     const { start, end } = req.query;
-    const userMonthImg = await ToDo.findAll({
+    const userMonthImg = await Image.findAll({
       where: {
         email: req["decoded"].email,
         date: { [Op.between]: [String(start), String(end)] },
