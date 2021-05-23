@@ -15,11 +15,10 @@ export const addToDo = async (todo: string, date: string) => {
 
 export const addToDoImg = async (imgFile: Blob, date: string) => {
   const formData: FormData = new FormData();
-  formData.append("filename", imgFile);
+  formData.append("image", imgFile);
   formData.append("date", date);
   return await apiDefault().post<ResDefault>(
     "/todo/addImage",
     formData
-    // {headers:  "Content-Type" :  "multipart/form-data" }
   );
 };

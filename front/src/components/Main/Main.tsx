@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import * as S from "./style";
 import Calendar from "./Calendar/Calendar";
 import Modal from "./Modal/Modal";
@@ -17,6 +17,7 @@ interface Props {
   setModalData: (date: string) => void;
   addToDoData: (todo: string, date: string) => void;
   addToDoClient: (todo: SetToDoDataInterface[]) => void;
+  sendImgToSever: (e: ChangeEvent<HTMLInputElement>, date: string) => void;
 }
 
 const Main: React.FC<Props> = ({
@@ -27,7 +28,8 @@ const Main: React.FC<Props> = ({
   goToLogin,
   setModalData,
   addToDoData,
-  addToDoClient
+  addToDoClient,
+  sendImgToSever
 }) => {
   const { setModal } = useSelector((store: ReducerType) => store.ModalState);
   return (
@@ -39,6 +41,7 @@ const Main: React.FC<Props> = ({
             <Modal
               addToDoData={addToDoData}
               addToDoClient={addToDoClient}
+              sendImgToSever={sendImgToSever}
             ></Modal>
           </S.ModalBox>
         </>

@@ -12,10 +12,12 @@ Image.init(
     },
     date: {
       type: Sequelize.STRING(15),
+      primaryKey : true
     },
     email: {
-        type: Sequelize.STRING(30),
-      },
+      type: Sequelize.STRING(30),
+      primaryKey : true
+    },
   },
   {
     sequelize,

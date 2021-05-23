@@ -11,7 +11,7 @@ import {
 function* setToDoDataSuccess(action: ReturnType<typeof setToDoDataSaga>) {
   try {
     const res = yield call(readToDo, action.payload);
-    yield put(setToDoData(res.data));
+    yield put(setToDoData(res.data[0]));
   } catch (err) {
     console.log(err);
   }

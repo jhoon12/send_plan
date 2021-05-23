@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, ChangeEvent } from "react";
 import Main from "../components/Main/Main";
 import { SettingDate } from "../hooks/type/Calendar";
 import WindowCalander from "window-calander";
@@ -12,6 +12,7 @@ import {
   SetToDoDataInterface,
   setToDoDataSaga
 } from "../redux/actions/ToDoData";
+import { addToDoImg } from "../lib/api/ToDo";
 const MainContainer = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -59,8 +60,15 @@ const MainContainer = () => {
       ])
     );
   }, []);
+  const sendImgToSever = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>, date: string) => {
+      await addToDoImg(e.target.files[0], date);
+    },
+    []
+  );
   return (
     <Main
+      sendImgToSever={sendImgToSever}
       setModalData={setModalData}
       goToLogin={goToLogin}
       nextMonth={nextMonth}
