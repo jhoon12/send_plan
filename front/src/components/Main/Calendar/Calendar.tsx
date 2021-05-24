@@ -15,6 +15,7 @@ const Calendar: React.FC<Props> = ({ setModalData }) => {
     month: new Date().getMonth() + 1
   });
   const { setData } = useSelector((store: ReducerType) => store.CalendarState);
+  const { imageDateArr } = useSelector((store: ReducerType) => store.ToDoDataState);
   const dayOfTheWeek: string[] = [
     "Sun",
     "Mon",
@@ -24,7 +25,6 @@ const Calendar: React.FC<Props> = ({ setModalData }) => {
     "Fri",
     "Set"
   ];
-
   return (
     <>
       <S.Header>

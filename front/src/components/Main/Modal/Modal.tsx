@@ -5,7 +5,7 @@ import { spliceDateString } from "../../../lib/utils";
 import { ReducerType } from "../../../redux/store";
 import ModalInput from "./ModalInput";
 import * as S from "./style";
-import { addToDoImg } from "../../../lib/api/ToDo";
+
 
 interface Props {
   addToDoClient: (todo: SetToDoDataInterface[]) => void;

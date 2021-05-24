@@ -7,7 +7,7 @@ export interface InitialInterface {
   setModal: boolean;
   date: string;
 }
-const initialState = {
+const initialState: InitialInterface = {
   setModal: false,
   date: ""
 };

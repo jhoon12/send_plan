@@ -8,11 +8,13 @@ import { setModal, setModalDate } from "../redux/actions/Modal";
 import { useHistory } from "react-router";
 import {
   addToDoSaga,
+  readToDoImageSaga,
   setToDoData,
   SetToDoDataInterface,
   setToDoDataSaga
 } from "../redux/actions/ToDoData";
 import { addToDoImg } from "../lib/api/ToDo";
+import { addZeroFunc } from "../lib/utils";
 const MainContainer = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -24,12 +26,19 @@ const MainContainer = () => {
     });
   }, []);
   useEffect(() => {
-    const data = WindowCalander(date.year, date.month);
+    const data = WindowCalander(date.year, date.month); //렌더링 달력 불러오기
+    const start = addZeroFunc(
+      data[0][0].year,
+      data[0][0].month,
+      data[0][0].date
+    );
+    const end = addZeroFunc(data[5][6].year, data[5][6].month, data[5][6].date);
+    dispatch(readToDoImageSaga({ start: start, end: end }));
     dispatch(setCalendar(data));
   }, [date]);
   const nextMonth = useCallback(() => {
     date.month > 11
-      ? setDate({ month: 1, year: date.year + 1 }) //12월 넘어가면
+      ? setDate({ month: 1, year: date.year + 1 })
       : setDate({ month: date.month + 1, year: date.year });
   }, [date]);
   const prevMonth = useCallback(() => {
@@ -44,7 +53,6 @@ const MainContainer = () => {
     history.push("/");
   }, []);
   const setModalData = useCallback((date: string) => {
-    console.log("호출");
     dispatchModal();
     dispatch(setModalDate(date));
     dispatch(setToDoDataSaga(date));

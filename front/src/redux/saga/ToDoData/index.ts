@@ -1,8 +1,11 @@
 import { put, takeEvery, call } from "@redux-saga/core/effects";
-import { addToDo, readToDo } from "../../../lib/api/ToDo";
+import { addToDo, readMonthImg, readToDo } from "../../../lib/api/ToDo";
 import {
   addToDoSaga,
   ADD_TODO_SAGA,
+  readToDoImage,
+  readToDoImageSaga,
+  READ_TODO_IMG_SAGA,
   setToDoData,
   setToDoDataSaga,
   SET_TODO_DATA_SAGA
@@ -24,7 +27,20 @@ function* addToDoSuccess(action: ReturnType<typeof addToDoSaga>) {
     console.log(err);
   }
 }
+function* readToDoImageSuccess(action: ReturnType<typeof readToDoImageSaga>) {
+  try {
+    const res = yield call(
+      readMonthImg,
+      action.payload.start,
+      action.payload.end
+    );
+    yield put( readToDoImage(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+}
 export default function* todoDataSaga() {
   yield takeEvery(SET_TODO_DATA_SAGA, setToDoDataSuccess);
   yield takeEvery(ADD_TODO_SAGA, addToDoSuccess);
+  yield takeEvery(READ_TODO_IMG_SAGA, readToDoImageSuccess);
 }

@@ -1,15 +1,19 @@
+import { ReadToDoImage } from "../../../lib/payloads/ToDo";
 import ToDoActionType, {
+  READ_TODO_IMG,
   SetToDoDataInterface,
-  SET_TODO_DATA,
+  SET_TODO_DATA
 } from "../../actions/ToDoData";
 
 export interface InitialInterface {
   todo: SetToDoDataInterface[];
   date: string;
+  imageDateArr: ReadToDoImage[];
 }
 export const initialState: InitialInterface = {
   todo: [],
-  date: ""
+  date: "",
+  imageDateArr: []
 };
 
 const ToDoDataState = (
@@ -21,6 +25,11 @@ const ToDoDataState = (
       return {
         ...state,
         todo: action.payload
+      };
+    case READ_TODO_IMG:
+      return {
+        ...state,
+        imageDateArr: action.payload
       };
     default:
       return state;

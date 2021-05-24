@@ -1,5 +1,5 @@
 import { ResDefault } from "../../payloads";
-import { ReadToDoRes } from "../../payloads/ToDo";
+import { ReadToDoImage, ReadToDoRes } from "../../payloads/ToDo";
 import apiDefault from "../index";
 
 export const readToDo = async (date: string) => {
@@ -17,8 +17,12 @@ export const addToDoImg = async (imgFile: Blob, date: string) => {
   const formData: FormData = new FormData();
   formData.append("image", imgFile);
   formData.append("date", date);
-  return await apiDefault().post<ResDefault>(
-    "/todo/addImage",
-    formData
+  return await apiDefault().post<ResDefault>("/todo/addImage", formData);
+};
+
+export const readMonthImg = async (start: string, end: string) => {
+  return await apiDefault().get<ReadToDoImage[]>(
+    `/todo/readImage?start=${start}&end=${end}`,
+    {}
   );
 };

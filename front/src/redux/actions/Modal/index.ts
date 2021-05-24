@@ -3,7 +3,7 @@ export const SET_MODAL_DATE = "Modal/SET_MODAL_DATE" as const;
 export const setModal = () => ({
   type: SET_MODAL
 });
-export const setModalDate = payload => ({
+export const setModalDate = (payload: string) => ({
   type: SET_MODAL_DATE,
   payload
 });

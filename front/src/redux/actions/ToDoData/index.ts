@@ -1,12 +1,17 @@
-export const SET_TODO_DATA = "ToDoData/SET_TODODATA";
-export const SET_TODO_DATA_SAGA = "ToDoData/SET_TODO_DATA_SAGA";
-export const ADD_TODO = "ToDoData/ADD_TODO_DATA";
-export const ADD_TODO_SAGA = "ToDoData/ADD_TODO_DATA_SAGA";
-// export const ADD_IMG = "ToDoData/ADD_IMG";
-// export const ADD_IMG_SAGA = "ToDoData/ADD_IMG_SAGA";
+import { ReadToDoImage } from "../../../lib/payloads/ToDo";
+export const SET_TODO_DATA = "ToDoData/SET_TODODATA" as const;
+export const SET_TODO_DATA_SAGA = "ToDoData/SET_TODO_DATA_SAGA" as const;
+export const ADD_TODO = "ToDoData/ADD_TODO_DATA" as const;
+export const ADD_TODO_SAGA = "ToDoData/ADD_TODO_DATA_SAGA" as const;
+export const READ_TODO_IMG = "ToDoData/READ_TODO_IMG" as const;
+export const READ_TODO_IMG_SAGA = "ToDoData/READ_TODO_IMG_SAGA" as const;
 interface AddToDoInterface {
   date: string;
   todo: string;
+}
+interface ReadToDoImageInterface {
+  start: string;
+  end: string;
 }
 export interface SetToDoDataInterface {
   ToDo: string;
@@ -15,14 +20,6 @@ export interface SetToDoDataInterface {
   img: null | string;
   todoID: number;
 }
-// interface SetImgFileInterface {
-//   lastModified: string;
-//   lastModifiedDate: object;
-//   name: string;
-//   size: number;
-//   type: string;
-//   webkitRelativePath: string;
-// }
 export const setToDoData = (payload: SetToDoDataInterface[]) => ({
   type: SET_TODO_DATA,
   payload
@@ -35,15 +32,17 @@ export const addToDoSaga = (payload: AddToDoInterface) => ({
   type: ADD_TODO_SAGA,
   payload
 });
-// export const addImgSaga = (payload: SetImgFileInterface) => ({
-//   type: ADD_IMG_SAGA,
-//   payload
-// });
-// export const addImg = (payload: string) => ({
-//   type: ADD_IMG,
-//   payload
-// });
+export const readToDoImage = (payload: ReadToDoImage[]) => ({
+  type: READ_TODO_IMG,
+  payload
+});
+export const readToDoImageSaga = (payload: ReadToDoImageInterface) => ({
+  type: READ_TODO_IMG_SAGA,
+  payload
+});
+
 type ToDoActionType =
   | ReturnType<typeof setToDoData>
-  // | ReturnType<typeof addImg>;
+  | ReturnType<typeof readToDoImage>;
+
 export default ToDoActionType;

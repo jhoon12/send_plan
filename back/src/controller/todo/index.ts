@@ -72,6 +72,7 @@ export const readImage = async (req: Request, res: Response, next) => {
         email: req["decoded"].email,
         date: { [Op.between]: [String(start), String(end)] },
       },
+      attributes: ["img", "date"]
     });
     res.status(200).json(userMonthImg);
   } catch (err) {

@@ -5,3 +5,7 @@ export interface ReadToDoRes {
   img: string | null;
   todoID: number;
 }
+export interface ReadToDoImage{
+  date : string,
+  img : string
+}
