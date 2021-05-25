@@ -7,10 +7,17 @@ import * as S from "./style";
 interface Props {
   key: number;
   dayData: CalendarData;
+  readImageDate: string;
   setModalData: (date: string) => void;
 }
 
-const DayBox: React.FC<Props> = ({ key, dayData, setModalData }) => {
+const DayBox: React.FC<Props> = ({
+  key,
+  dayData,
+  setModalData,
+  readImageDate
+}) => {
+
   const [today, setToday] = useState<Today>({
     date: new Date().getDate(),
     month: new Date().getMonth() + 1
@@ -23,6 +30,7 @@ const DayBox: React.FC<Props> = ({ key, dayData, setModalData }) => {
       onClick={() =>
         setModalData(addZeroFunc(dayData.year, dayData.month, dayData.date))
       }
+      backgroundImage={readImageDate ? readImageDate : null}
     >
       <S.Day>{dayData.date}</S.Day>
     </S.DayBox>

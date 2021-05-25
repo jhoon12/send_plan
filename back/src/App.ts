@@ -11,10 +11,11 @@ app.use(cors());
 sequelize.sync();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use("/uploads", express.static("uploads"));
 
 app.use("/", router);
 
 app.listen(process.env.DB_PORT || 8000, () => {
+  console.log(__dirname);
   console.log("Server listening on port 8000");
 });
