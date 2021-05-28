@@ -7,7 +7,7 @@ import * as S from "./style";
 interface Props {
   key: number;
   dayData: CalendarData;
-  readImageDate: string;
+  readImageDate: string | void;
   setModalData: (date: string) => void;
 }
 

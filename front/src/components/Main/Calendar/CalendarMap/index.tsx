@@ -23,7 +23,7 @@ const CalendarMap: React.FC<Props> = ({ setModalData }) => {
                 dayData={ele}
                 setModalData={setModalData}
                 readImageDate={
-                  readImageDate(addZeroFunc(ele.year, ele.month, ele.date))[0]
+                  readImageDate(addZeroFunc(ele.year, ele.month, ele.date))
                 }
               />
             );

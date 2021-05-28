@@ -50,11 +50,12 @@ export const readToDo = async (req: Request, res: Response, next) => {
 
 export const addImage = async (req: Request, res: Response, next) => {
   try {
-    await Image.create({
-      img: req.file.filename,
-      email: req["decoded"].email,
-      date: req.body["date"],
-    });
+    await Image.update(
+      {
+        img: req.file.filename,
+      },
+      { where: { email: req["decoded"].email, date: req.body["date"] } }
+    );
     res.status(200).json({
       status: "Success",
       code: 200,
@@ -72,7 +73,7 @@ export const readImage = async (req: Request, res: Response, next) => {
         email: req["decoded"].email,
         date: { [Op.between]: [String(start), String(end)] },
       },
-      attributes: ["img", "date"]
+      attributes: ["img", "date"],
     });
     res.status(200).json(userMonthImg);
   } catch (err) {

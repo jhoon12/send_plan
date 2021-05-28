@@ -5,14 +5,13 @@ const useReadImageCase = () => {
   const { imageDateArr } = useSelector(
     (store: ReducerType) => store.ToDoDataState
   );
-  const readImageDate = (date: string): string[] => {
-    //   console.log(date)
-    return imageDateArr.map((ele, index) => {
-      if (date === ele.date) {
-        console.log(`${index}번 호출${date}, ${ele.date}`);
-        return ele.img;
+  const readImageDate = (date: string): string | void => {
+ 
+    for (let i = 0; i < imageDateArr.length; i++) {
+      if (date === imageDateArr[i].date) {
+        return imageDateArr[i].img;
       }
-    });
+    }
   };
   return {
     readImageDate

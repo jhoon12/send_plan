@@ -4,7 +4,7 @@ import { Date, Today } from "../../../../../hooks/type/Calendar";
 export const DayBox = styled.div<{
   dayData: Date;
   today: Today;
-  backgroundImage: string;
+  backgroundImage?: string;
 }>`
   flex: 1;
   height: 100%;
