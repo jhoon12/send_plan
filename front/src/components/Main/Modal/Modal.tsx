@@ -6,7 +6,6 @@ import { ReducerType } from "../../../redux/store";
 import ModalInput from "./ModalInput";
 import * as S from "./style";
 
-
 interface Props {
   addToDoClient: (todo: SetToDoDataInterface[]) => void;
   addToDoData: (todo: string, date: string) => void;
@@ -18,18 +17,23 @@ const Modal: React.FC<Props> = ({
   addToDoClient,
   sendImgToSever
 }) => {
-  const { date } = useSelector((store: ReducerType) => store.ModalState);
-  const { todo } = useSelector((store: ReducerType) => store.ToDoDataState);
+  const { date, img }: { date: string; img: string } = useSelector(
+    (store: ReducerType) => store.ModalState
+  );
+  const { todo }: { todo: SetToDoDataInterface[] } = useSelector(
+    (store: ReducerType) => store.ToDoDataState
+  );
   const [modalDate, setModalDate] = useState<string>("");
-  const [img, setImg] = useState<string>("");
+  const [clientImg, setClientImg] = useState<string>("");
   useEffect(() => {
+    if (img) setClientImg(`http://10.156.145.168:8000/uploads/${img}`);
     setModalDate(spliceDateString(date));
   }, []);
   const changeImgClient = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setImg(URL.createObjectURL(e.target.files[0]));
+    (e: ChangeEvent<HTMLInputElement>): void => {
+      setClientImg(URL.createObjectURL(e.target.files[0]));
     },
-    [img]
+    [clientImg]
   );
   return (
     <S.Body>
@@ -51,8 +55,8 @@ const Modal: React.FC<Props> = ({
         </S.ToDoContainer>
       </S.ToDoBox>
       <S.ImgBox>
-        <S.ImgText htmlFor="imgFile" img={img}>
-          {img === "" ? "이미지 추가" : ""}
+        <S.ImgText htmlFor="imgFile" img={clientImg}>
+          {clientImg === "" ? "이미지 추가" : ""}
         </S.ImgText>
         <form>
           <S.Imginput

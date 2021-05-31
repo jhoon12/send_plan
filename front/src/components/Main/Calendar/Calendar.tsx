@@ -4,7 +4,7 @@ import CalendarMap from "./CalendarMap";
 import DayOfWeek from "./DayOfWeek";
 
 interface Props {
-  setModalData: (date: string) => void;
+  setModalData: (date: string, img: string | void) => void;
 }
 const Calendar: React.FC<Props> = ({ setModalData }) => {
   return (

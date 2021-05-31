@@ -10,12 +10,11 @@ interface Props {
 const ModalInput: React.FC<Props> = ({ index, addToDoData, todo, date }) => {
   const [input, setInput] = useState<string>("");
   const inputChangeHandler = useCallback(
-    e => {
+    (e): void => {
       setInput(e.target.value);
     },
     [input]
   );
-
   return (
     <S.ToDoContainer key={index}>
       {todo.length > 0 ? (

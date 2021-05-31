@@ -1,15 +1,18 @@
 import ModalActionType, {
   SET_MODAL,
-  SET_MODAL_DATE
+  SET_MODAL_DATE,
+  SET_MODAL_IMG
 } from "../../actions/Modal";
 
 export interface InitialInterface {
   setModal: boolean;
   date: string;
+  img: string;
 }
 const initialState: InitialInterface = {
   setModal: false,
-  date: ""
+  date: "",
+  img: ""
 };
 
 const ModalState = (
@@ -26,6 +29,11 @@ const ModalState = (
       return {
         ...state,
         date: action.payload
+      };
+    case SET_MODAL_IMG:
+      return {
+        ...state,
+        img: action.payload
       };
     default:
       return state;

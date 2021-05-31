@@ -3,16 +3,17 @@ import Login from "../components/Login/Login";
 import { useHistory } from "react-router-dom";
 import { loginHandlerApi } from "../lib/api/Login";
 import { LoginResponse } from "../lib/payloads/login";
+import { History } from 'history';
 const LoginContainer = () => {
   const [userLoginData, setUserLoginData] = useState<{
     id: string;
     pw: string;
   }>({ id: "", pw: "" });
-  const history = useHistory();
-  const goToSignUp = useCallback(() => {
+  const history : History = useHistory();
+  const goToSignUp = useCallback((): void => {
     history.push("/signUp");
   }, []);
-  const loginBtnHandler = useCallback(async () => {
+  const loginBtnHandler = useCallback(async (): Promise<void> => {
     try {
       const res: LoginResponse = await loginHandlerApi(
         userLoginData.id,
@@ -23,7 +24,6 @@ const LoginContainer = () => {
       history.push("/main");
     } catch (err) {
       if (err.response.status === 404) alert("없는 유저입니다.");
-      console.log(err);
     }
   }, [userLoginData]);
   return (

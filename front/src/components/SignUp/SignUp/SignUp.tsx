@@ -1,10 +1,9 @@
 import React from "react";
 import * as S from "./style";
 import SignUpBox from "../SignUpBox/SignUpBox";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { SignUpDataInterface } from "../../../hooks/type/user";
 import { setEmail } from "../../../redux/actions/SignUp";
-import { ReducerType } from "../../../redux/store";
 interface Props {
   goToCheckEmail: () => void;
   userSignUpData: SignUpDataInterface;

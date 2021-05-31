@@ -2,16 +2,13 @@ import React from "react";
 import * as S from "./style";
 
 interface Props {
-
   goToSignUp: () => void;
   setUserLoginData: (userData: { id: string; pw: string }) => void;
   userLoginData: { id: string; pw: string };
   loginBtnHandler: () => void;
-  
 }
 
 const Login: React.FC<Props> = ({
-
   goToSignUp,
   setUserLoginData,
   userLoginData,
@@ -30,7 +27,7 @@ const Login: React.FC<Props> = ({
           value={userLoginData.id}
         />
         <S.LoginInput
-        type="password"
+          type="password"
           placeholder="비밀번호"
           onChange={e =>
             setUserLoginData({ ...userLoginData, pw: e.target.value })

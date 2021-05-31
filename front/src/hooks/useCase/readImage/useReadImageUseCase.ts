@@ -6,7 +6,6 @@ const useReadImageCase = () => {
     (store: ReducerType) => store.ToDoDataState
   );
   const readImageDate = (date: string): string | void => {
- 
     for (let i = 0; i < imageDateArr.length; i++) {
       if (date === imageDateArr[i].date) {
         return imageDateArr[i].img;

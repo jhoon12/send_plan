@@ -8,7 +8,7 @@ interface Props {
   key: number;
   dayData: CalendarData;
   readImageDate: string | void;
-  setModalData: (date: string) => void;
+  setModalData: (date: string, img: string | void) => void;
 }
 
 const DayBox: React.FC<Props> = ({
@@ -17,7 +17,6 @@ const DayBox: React.FC<Props> = ({
   setModalData,
   readImageDate
 }) => {
-
   const [today, setToday] = useState<Today>({
     date: new Date().getDate(),
     month: new Date().getMonth() + 1
@@ -28,7 +27,10 @@ const DayBox: React.FC<Props> = ({
       dayData={dayData}
       today={today}
       onClick={() =>
-        setModalData(addZeroFunc(dayData.year, dayData.month, dayData.date))
+        setModalData(
+          addZeroFunc(dayData.year, dayData.month, dayData.date),
+          readImageDate
+        )
       }
       backgroundImage={readImageDate ? readImageDate : null}
     >

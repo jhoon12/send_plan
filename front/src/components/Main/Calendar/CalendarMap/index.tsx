@@ -6,7 +6,7 @@ import { ReducerType } from "../../../../redux/store";
 import DayBox from "./DayBox";
 import * as S from "./style";
 interface Props {
-  setModalData: (date: string) => void;
+  setModalData: (date: string, img: string | void) => void;
 }
 
 const CalendarMap: React.FC<Props> = ({ setModalData }) => {

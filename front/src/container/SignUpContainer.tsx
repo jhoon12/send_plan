@@ -6,22 +6,21 @@ import { signUpHandlerApi } from "../lib/api/SignUp";
 import { SignUpDataInterface } from "../hooks/type/user";
 import { ReducerType } from "../redux/store";
 import { CheckEmail } from "../lib/utils";
-
+import { History } from "history";
 const SignUpContainer = () => {
-  const history = useHistory();
+  const history: History = useHistory();
   const { email } = useSelector((store: ReducerType) => store.SignUpState);
   const [userSignUpData, setUserSignUpData] = useState<SignUpDataInterface>({
     id: "",
     pw: "",
     pwCheck: ""
   });
-  const goToCheckEmail = useCallback(async () => {
+  const goToCheckEmail = useCallback(async (): Promise<void> => {
     if (userSignUpData.pw === userSignUpData.pwCheck && CheckEmail(email)) {
       try {
         await signUpHandlerApi(email, userSignUpData.id, userSignUpData.pw);
         history.push("/signUp/checkEm");
       } catch (err) {
-        console.log(err);
         if (err.response.status === 400) alert("이미 존재하는 계정입니다.");
       }
     } else {

@@ -14,7 +14,7 @@ interface Props {
     year: number;
   };
   goToLogin: () => void;
-  setModalData: (date: string) => void;
+  setModalData: (date: string, img: string | void) => void;
   addToDoData: (todo: string, date: string) => void;
   addToDoClient: (todo: SetToDoDataInterface[]) => void;
   sendImgToSever: (e: ChangeEvent<HTMLInputElement>, date: string) => void;
