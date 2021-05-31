@@ -44,20 +44,6 @@ export const ToDoContainer = styled.div`
   display: flex;
 `;
 
-// export const ToDo = styled.div`
-//   padding-left: 30px;
-//   width: 85%;
-//   height: 20px;
-//   font-weight: bold;
-//   background-color: #f8f9fa;
-//   border: 0px;
-//   outline: none;
-// `;
-// export const Success = styled.button`
-//   border: none;
-//   background-color: #f8f9fa;
-//   color: rgb(110, 110, 110);
-// `;
 export const ImgBox = styled.div`
   margin: 0 auto;
   margin-top: 30px;
