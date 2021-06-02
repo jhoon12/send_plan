@@ -29,3 +29,6 @@ export const CheckEmail = (email: string): boolean => {
   if (!reg_email.test(email)) return false;
   else return true;
 };
+export const getImgSrc = (img : string): string =>{
+  return `http://10.156.145.168:8000/uploads/${img}`
+}

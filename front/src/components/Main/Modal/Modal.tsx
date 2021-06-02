@@ -1,7 +1,8 @@
 import React, { useState, useEffect, ChangeEvent, useCallback } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { SetToDoDataInterface } from "../../../redux/actions/ToDoData";
-import { spliceDateString } from "../../../lib/utils";
+import { getImgSrc, spliceDateString } from "../../../lib/utils";
+import { setModalImg } from "../../../redux/actions/Modal/index";
 import { ReducerType } from "../../../redux/store";
 import ModalInput from "./ModalInput";
 import * as S from "./style";
@@ -17,6 +18,7 @@ const Modal: React.FC<Props> = ({
   addToDoClient,
   sendImgToSever
 }) => {
+  const dispatch = useDispatch();
   const { date, img }: { date: string; img: string } = useSelector(
     (store: ReducerType) => store.ModalState
   );
@@ -26,8 +28,11 @@ const Modal: React.FC<Props> = ({
   const [modalDate, setModalDate] = useState<string>("");
   const [clientImg, setClientImg] = useState<string>("");
   useEffect(() => {
-    if (img) setClientImg(`http://10.156.145.168:8000/uploads/${img}`);
+    if (img) setClientImg(getImgSrc(img));
     setModalDate(spliceDateString(date));
+    return () => {
+      dispatch(setModalImg(""));
+    };
   }, []);
   const changeImgClient = useCallback(
     (e: ChangeEvent<HTMLInputElement>): void => {

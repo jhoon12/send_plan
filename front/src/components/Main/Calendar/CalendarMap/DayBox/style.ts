@@ -19,11 +19,10 @@ export const DayBox = styled.div<{
     else if (props.dayData.isThisMonth) return "black";
     else return "#868e96";
   }};
-  background: url(${props =>props ? `http://10.156.145.168:8000/uploads/${props.backgroundImage}` : ""});
-   background-repeat: no-repeat;
+  background: url(${props => (props ? props.backgroundImage : "")});
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
 `;
 export const Day = styled.div`
   margin: 0 auto;

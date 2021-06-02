@@ -50,12 +50,30 @@ export const readToDo = async (req: Request, res: Response, next) => {
 
 export const addImage = async (req: Request, res: Response, next) => {
   try {
-    await Image.update(
-      {
-        img: req.file.filename,
-      },
-      { where: { email: req["decoded"].email, date: req.body["date"] } }
-    );
+  
+    if (
+     await Image.findOne({
+        where: { email: req["decoded"].email, date: req.body["date"] },
+      })
+    ) {
+   
+      await Image.update(
+        {
+          img: req.file.filename,
+        },
+        { where: { email: req["decoded"].email, date: req.body["date"] } }
+      );
+    } else {
+  
+      await Image.create(
+        {
+          img: req.file.filename,
+          email: req["decoded"].email,
+          date: req.body["date"],
+        }
+      );
+    }
+
     res.status(200).json({
       status: "Success",
       code: 200,
